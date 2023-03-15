@@ -46,8 +46,11 @@ router.post('/login', async(req, res)=>
         if(!passwordValid)
         return res.status(400).json({success:false, message:"incorrect password"})
 
-        const accesstoken = jwtoken.sign({userId:User._id},'jkiyondnaiosjw')
-        res.json({success:true,message:"login success",accesstoken})
+        const accessToken = jwtoken.sign(
+			{ userId: user._id },
+			'jkiyondnaiosjw'
+		)
+        res.json({success:true,message:"login success",accessToken})
     } catch (error) {
         console.log(error)
         res.status(500).json({success:false, message:"MongoDB error"})

@@ -8,7 +8,7 @@ const PostSchema = new Schema(
             require: true,
             unique: false
         },
-        pdess:{
+        pdesc:{
             type: String,
             require: false
         },
@@ -25,6 +25,6 @@ const PostSchema = new Schema(
         }
     }
 )
-module.exports = mongoose.model('posrs',PostSchema)
+module.exports = mongoose.model('posts',PostSchema)
 
-module.exports = mongoose.model('users',UserSchema)
+// module.exports = mongoose.model('users',UserSchema)

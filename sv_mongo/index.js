@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 const authRouter = require('./routers/auth')
+const postRouter = require('./routers/post')
 const connectDB = async() => {
     try {
         await mongoose.connect(`mongodb+srv://huytgio147:147852Huytgio@letmeknow.vdxja2f.mongodb.net/LetmeKnow?retryWrites=true&w=majority`,
@@ -20,6 +21,7 @@ const app = express()
 app.use(express.json())
 
 app.use('/api/auth',authRouter)
+app.use('/api/posts',postRouter)
 
 app.get('/',(req,res) => res.send('cmmdmm'))
 
