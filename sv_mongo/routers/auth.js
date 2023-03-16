@@ -5,11 +5,11 @@ const jwtoken = require('jsonwebtoken')
 const User = require('../models/User')
 
 router.get('/',(req,res)=>res.send('USER ROUTE'))
-
+//sign up
 router.post('/register', async(req, res)=>
 {
     const {username, password} = req.body
-    //check sign up
+    
     if(!username || !password)
     return res.status(400).json({success:false, message:"miss user or pass"})
     
@@ -28,6 +28,7 @@ router.post('/register', async(req, res)=>
         res.status(500).json({success:false, message:"MongoDB error"})
     }
 })
+//login
 router.post('/login', async(req, res)=>
 {
     const {username, password} = req.body
