@@ -25,7 +25,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDExZ
     "status": "in work"
 }
 ###
-GET http://localhost:5000/api/posts
+GET http://localhost:5000/api/posts/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDExZjc5MDIxYjE4Y2Q0ZTAxNjVjM2YiLCJpYXQiOjE2Nzg5MDAyMTl9.w0J-nBfQRmQgWOtpIoe0saFkT3undZnC3pCRVM_g5hU
 
@@ -56,4 +56,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDExZ
     "pdesc": "new post 4",
     "url": "facebook.com/linhthuy234",
     "status": "in work"
+}
+###
+POST http://localhost:5000/api/comment/641338ef80788935bcf9a644
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDExZjc5MDIxYjE4Y2Q0ZTAxNjVjM2YiLCJpYXQiOjE2Nzg5MDAyMTl9.w0J-nBfQRmQgWOtpIoe0saFkT3undZnC3pCRVM_g5hU
+
+{
+    "content":"Linh is my mom",
+    "status": "Feedback"
+}
+###
+DELETE  http://localhost:5000/api/comment/641338ef80788935bcf9a644/64134161d0c702b6616c7cc7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDExZjc5MDIxYjE4Y2Q0ZTAxNjVjM2YiLCJpYXQiOjE2Nzg5MDAyMTl9.w0J-nBfQRmQgWOtpIoe0saFkT3undZnC3pCRVM_g5hU
+
+{
+    "content":"Linh is my pretty mom, and i love her so much",
+    "status": "Feedback"
 }
