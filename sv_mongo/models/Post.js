@@ -3,21 +3,21 @@ const Schema = mongoose.Schema
 
 const PostSchema = new Schema(
     {
-        title:{
+        title: {
             type: String,
             require: true,
             unique: false
         },
-        pdesc:{
+        pdesc: {
             type: String,
             require: false
         },
-        url:{
+        url: {
             type: String,
         },
-        status:{
+        status: {
             type: String,
-            enum: ['Will do', 'in work','complete']
+            enum: ['Will do', 'in work', 'complete']
         },
         user: {
             type: Schema.Types.ObjectId,
@@ -25,5 +25,5 @@ const PostSchema = new Schema(
         }
     }
 )
-module.exports = mongoose.model('posts',PostSchema)
+module.exports = mongoose.model('posts', PostSchema)
 

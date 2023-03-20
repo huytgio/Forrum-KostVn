@@ -1,3 +1,4 @@
+// Check if the token is valid and update the status. This is called after the user has signed the request
 const jwt = require('jsonwebtoken')
 
 const verifyToken = (req, res, next) => {
