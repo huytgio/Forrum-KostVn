@@ -36,8 +36,8 @@ router.post('/register', async (req, res) => {
         const newUser = new User({ username, password: hashedPassword })
         await newUser.save()
 
-        const accesstoken = jwtoken.sign({ userId: newUser._id }, 'jkiyondnaiosjw')
-        res.json({ success: true, message: "User created successfully", accesstoken })
+        const accessToken = jwtoken.sign({ userId: newUser._id }, 'jkiyondnaiosjw')
+        res.json({ success: true, message: "User created successfully", accessToken })
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: "MongoDB error" })
