@@ -3,7 +3,8 @@ Content-Type: application/json
 
 {
     "username" : "linhthuy2",
-    "password" : "tl020304"
+    "password" : "tl020304",
+    "c_password" : "tl020304"
 }
 ###
 POST http://localhost:5000/api/auth/login
