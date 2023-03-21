@@ -4,26 +4,40 @@ const router = express.Router()
 const argon2 = require('argon2')
 const jwtoken = require('jsonwebtoken')
 const User = require('../models/User')
+const verifyToken = require('../middleware/auth')
 
 router.get('/', (req, res) => res.send('USER ROUTE'))
+
+
+router.get('/verify', verifyToken, async (req, res) => {
+    try {
+        const user = await User.findById(req.userId).select('-password')
+        if (!user)
+            return res.status(400).json({ success: false, message: 'User not found' })
+        res.json({ success: true, user })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, message: 'Internal server error' })
+    }
+})
 //sign up
 // Register a new user. This is a POST and should return a JSON object
 router.post('/register', async (req, res) => {
-    const { username, password } = req.body
+    const { username, password, c_password } = req.body
 
     if (!username || !password)
-        return res.status(400).json({ success: false, message: "miss user or pass" })
+        return res.status(400).json({ success: false, message: "Missing Username or Password" })
 
     try {
         const user = await User.findOne({ username })
         if (user)
-            return res.status(400).json({ success: false, message: "user alrd taken" })
+            return res.status(400).json({ success: false, message: "User already Taken, Please Take Other" })
         const hashedPassword = await argon2.hash(password)
         const newUser = new User({ username, password: hashedPassword })
         await newUser.save()
 
         const accesstoken = jwtoken.sign({ userId: newUser._id }, 'jkiyondnaiosjw')
-        res.json({ success: true, message: "user created sucess", accesstoken })
+        res.json({ success: true, message: "User created successfully", accesstoken })
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: "MongoDB error" })
