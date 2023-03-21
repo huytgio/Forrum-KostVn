@@ -43,7 +43,7 @@ const LoginForm = () => {
                 <AlertMessage info={alert} />
                 <Form.Group>
                     <Form.Control type='text'
-                        placeholder='Username'
+                        placeholder='Tên Đăng Nhập'
                         name='username' required
                         value={username}
                         onChange={onChangerLoginForm}></Form.Control>
@@ -51,19 +51,19 @@ const LoginForm = () => {
                 <br></br>
                 <Form.Group>
                     <Form.Control type='password'
-                        placeholder='Password'
+                        placeholder='mật Khẩu'
                         name='password' required
                         value={password}
                         onChange={onChangerLoginForm}></Form.Control>
                 </Form.Group>
                 <br></br>
-                <Button variant='success' type='submit'>Login</Button>
+                <Button variant='success' type='submit'>Đăng Nhập</Button>
                 <br></br>
                 <br></br>
-                <p>Don't have an account?
+                <p>Chưa Có Tài Khoản Hả Bạn?
                     &nbsp;
                     <Link to='/register'>
-                        <Button variant='info' size='sm' className='ml-2'>Register Now!</Button>
+                        <Button variant='info' size='sm' className='ml-2'>Đăng Ký Ngay!</Button>
                     </Link>
                 </p>
             </Form>

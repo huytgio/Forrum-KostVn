@@ -21,7 +21,7 @@ const RegisterForm = () => {
     const Register = async event => {
         event.preventDefault()
         if (password !== c_password) {
-            setAlert({ type: 'danger', message: 'Password not match' })
+            setAlert({ type: 'danger', message: 'Mật Khẩu Không Khớp' })
             setTimeout(() => {
                 setAlert(null)
 
@@ -50,24 +50,24 @@ const RegisterForm = () => {
             <Form className='my-4' onSubmit={Register}>
                 <AlertMessage info={alert} />
                 <Form.Group>
-                    <Form.Control type='text' placeholder='Username' name='username' required value={username} onChange={onChangerRegisterForm}></Form.Control>
+                    <Form.Control type='text' placeholder='Tên Đăng Nhập' name='username' required value={username} onChange={onChangerRegisterForm}></Form.Control>
                 </Form.Group>
                 <br></br>
                 <Form.Group>
-                    <Form.Control type='password' placeholder='Password' name='password' required value={password} onChange={onChangerRegisterForm}></Form.Control>
+                    <Form.Control type='password' placeholder='Mật Khẩu' name='password' required value={password} onChange={onChangerRegisterForm}></Form.Control>
                 </Form.Group>
                 <br></br>
                 <Form.Group>
-                    <Form.Control type='password' placeholder='Confirm Password' name='c_password' required value={c_password} onChange={onChangerRegisterForm}></Form.Control>
+                    <Form.Control type='password' placeholder='Xác Nhận Mật Khẩu' name='c_password' required value={c_password} onChange={onChangerRegisterForm}></Form.Control>
                 </Form.Group>
                 <br></br>
-                <Button variant='success' type='submit'>Register</Button>
+                <Button variant='success' type='submit'>Đăng Ký</Button>
                 <br></br>
                 <br></br>
-                <p>Already have an account?
+                <p>Đã Có Tài Khoản?
                     &nbsp;
                     <Link to='/login'>
-                        <Button variant='info' size='sm' className='ml-2'>To Login</Button>
+                        <Button variant='info' size='sm' className='ml-2'>Mời Đăng Nhập</Button>
                     </Link>
                 </p>
             </Form>

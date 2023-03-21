@@ -1,4 +1,4 @@
-// This is the function that handles user registration and password auth. We need to be careful about this because it's called in two places : 1
+
 const express = require('express');
 const router = express.Router()
 const argon2 = require('argon2')
@@ -13,63 +13,63 @@ router.get('/verify', verifyToken, async (req, res) => {
     try {
         const user = await User.findById(req.userId).select('-password')
         if (!user)
-            return res.status(400).json({ success: false, message: 'User not found' })
+            return res.status(400).json({ success: false, message: 'Không tìm thấy tên đăng nhập' })
         res.json({ success: true, user })
     } catch (error) {
         console.log(error)
-        res.status(500).json({ success: false, message: 'Internal server error' })
+        res.status(500).json({ success: false, message: 'Lỗi Hệ Thống' })
     }
 })
 //sign up
-// Register a new user. This is a POST and should return a JSON object
+
 router.post('/register', async (req, res) => {
     const { username, password, c_password } = req.body
 
     if (!username || !password)
-        return res.status(400).json({ success: false, message: "Missing Username or Password" })
+        return res.status(400).json({ success: false, message: "Thiếu tên đăng nhập hoặc mật khẩu" })
 
     try {
         const user = await User.findOne({ username })
         if (user)
-            return res.status(400).json({ success: false, message: "User already Taken, Please Take Other" })
+            return res.status(400).json({ success: false, message: "Tên người dùng đã tồn tại, mời nhập tên khác" })
         const hashedPassword = await argon2.hash(password)
         const newUser = new User({ username, password: hashedPassword })
         await newUser.save()
 
         const accessToken = jwtoken.sign({ userId: newUser._id }, 'jkiyondnaiosjw')
-        res.json({ success: true, message: "User created successfully", accessToken })
+        res.json({ success: true, message: "Đăng ký thành công", accessToken })
     } catch (error) {
         console.log(error)
-        res.status(500).json({ success: false, message: "MongoDB error" })
+        res.status(500).json({ success: false, message: "Lỗi Hệ Thống" })
     }
 })
 //login
-// Logs in a user. Returns a 401 if the user could not be found
+
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
     //check sign up
     if (!username || !password)
-        return res.status(400).json({ success: false, message: "miss user or pass" })
+        return res.status(400).json({ success: false, message: "Thiếu tên đăng nhập hoặc mật khẩu" })
 
     try {
         const user = await User.findOne({ username })
         if (!user)
-            return res.status(400).json({ success: false, message: "incorrect username" })
+            return res.status(400).json({ success: false, message: "Sai tên đăng nhập" })
         /* const hashedPassword = await argon2.hash(password)
         const newUser = new User({username,password:hashedPassword})
         await newUser.save() */
         const passwordValid = await argon2.verify(user.password, password)
         if (!passwordValid)
-            return res.status(400).json({ success: false, message: "incorrect password" })
+            return res.status(400).json({ success: false, message: "Sai mật khẩu" })
 
         const accessToken = jwtoken.sign(
             { userId: user._id },
             'jkiyondnaiosjw'
         )
-        res.json({ success: true, message: "login success", accessToken })
+        res.json({ success: true, message: "Đăng nhập thành công", accessToken })
     } catch (error) {
         console.log(error)
-        res.status(500).json({ success: false, message: "MongoDB error" })
+        res.status(500).json({ success: false, message: "Lỗi hệ thống" })
     }
 })
 
