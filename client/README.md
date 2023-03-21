@@ -70,4 +70,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 I use some lib to build this app, install them by:
-### npm i react-bootstrap bootstrap axios react-router-dom
+### `npm i react-bootstrap bootstrap axios react-router-dom`
