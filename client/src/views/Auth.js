@@ -11,7 +11,7 @@ const Auth = ({ authRoute }) => {
     console.log(`isAu ${isAuthenticated}, loading ${authLoading}`)
     // console.log({ authState: { authLoading, isAuthenticated } })
     let body
-    
+
     // if (!isAuthenticated) {
 
     //     body = (
@@ -51,7 +51,7 @@ const Auth = ({ authRoute }) => {
             <div className='dark-overlay'>
                 <div className='landing-inner'>
                     <h1>Let Me Know</h1>
-                    <h4>Share our whats you learn</h4>
+                    <h4>Diễn dàn của Sinh Viên IT năm 96!</h4>
                     {body}
                 </div>
             </div>
