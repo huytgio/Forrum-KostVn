@@ -2,18 +2,19 @@ import Button from "react-bootstrap/esm/Button"
 import playIcon from '../../assets/play-btn.png'
 import editIcon from '../../assets/pencil.svg'
 import deleteIcon from '../../assets/trash.svg'
-import cmtIcon from '../../assets/chat.svg'
+
 
 import React, { useContext } from 'react'
 import { PostContext } from "../../contexts/PostContext"
 import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/esm/Row"
-import Col from 'react-bootstrap/Col'
+
 
 const ActionButton = ({ url, _id }) => {
-    const { deletePost, findPost, setShowUpdatePostModal } = useContext(PostContext)
+    const { deletePost, findPost, setShowUpdatePostModal, postState: { post } } = useContext(PostContext)
     const choosePost = postId => {
         findPost(postId)
+        console.log(post)
         setShowUpdatePostModal(true)
 
     }

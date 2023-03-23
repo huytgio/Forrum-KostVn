@@ -27,9 +27,8 @@ const SinglePost = ({ post: { _id, status, title, pdesc, url } }) => (
                 {status}
             </Badge>
             <Card.Text>
-                <center>{pdesc} </center>
+                {pdesc}
 
-                <hr></hr>
             </Card.Text>
             <ActionButtons url={url} _id={_id} />
         </Card.Body>

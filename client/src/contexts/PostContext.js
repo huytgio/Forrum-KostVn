@@ -76,6 +76,22 @@ const PostContextProvider = ({ children }) => {
         }
     }
 
+    const getPostsById = async postId => {
+        try {
+            const response = await axios.get(`${apiUrl}/posts/${postId}`)
+            if (response.data.success) {
+                dispatch({ type: FIND_POST, payload: response.data.posts })
+            }
+        } catch (error) {
+            dispatch({ type: POSTS_LOADED_FAIL })
+            if (error.response.data) {
+                console.log('loi he thong')
+                return error.response.data
+            }
+            else return { success: false, message: error.message }
+        }
+    }
+
     const deletePost = async postId => {
         try {
             const response = await axios.delete(`${apiUrl}/posts/${postId}`)
@@ -113,7 +129,7 @@ const PostContextProvider = ({ children }) => {
         addPost, showToast, setShowToast,
         deletePost, updatePost, findPost,
         showUpdatePostModal, setShowUpdatePostModal,
-        getAllPosts
+        getAllPosts, getPostsById
     }
 
     return (

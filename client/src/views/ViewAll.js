@@ -36,11 +36,6 @@ const ViewAll = () => {
                     </Col>
                 ))}
             </Row>
-            <Overlay placement="left" overlay={<Tooltip> Chia sẻ thêm cho chúng tôi </Tooltip>}>
-                <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
-                    <img src={addIcon} alt='add' width='80' height='80' />
-                </Button>
-            </Overlay>
         </Card>
 
 

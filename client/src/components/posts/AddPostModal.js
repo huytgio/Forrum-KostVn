@@ -7,6 +7,7 @@ import { PostContext } from '../../contexts/PostContext'
 
 const AddPostModal = () => {
 
+
     const { showAddPostModal, setShowAddPostModal, addPost, setShowToast } = useContext(PostContext)
     const [newPost, setNewPost] = useState({
         title: '',

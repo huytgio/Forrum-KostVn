@@ -49,6 +49,19 @@ router.get('/getallpost', verifyToken, async (req, res) => {
     }
 })
 
+router.get('/:id', verifyToken, async (req, res) => {
+    try {
+        //const posts = await Post.find({ user: req.userId }).populate('user', ['username'])
+        const posts = await Post.findOne({ _id: req.params.id }).populate('user', ['username'])
+        res.json({ success: true, posts })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, message: "MongoDB error" })
+    }
+})
+
+
+
 //update post
 // Updates a post. This is a PUT and should only be used for post updates
 router.put('/:id', verifyToken, async (req, res) => {

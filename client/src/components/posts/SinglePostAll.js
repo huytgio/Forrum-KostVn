@@ -28,9 +28,7 @@ const SinglePostAll = ({ post: { _id, status, title, pdesc, url, user: { usernam
                 {status}
             </Badge>
             <Card.Text>
-                <center>{pdesc} </center>
-
-                <hr></hr>
+                {pdesc}
             </Card.Text>
             <ActionButtonsAll url={url} _id={_id} />
         </Card.Body>

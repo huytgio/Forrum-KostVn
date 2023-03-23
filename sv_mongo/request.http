@@ -77,6 +77,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDExZ
     "status": "Feedback"
 }
 ###
-GET http://localhost:5000/api/posts/getallpost
+GET http://localhost:5000/api/posts/641c3a7cc13bc81bd509c44f
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDExZjc5MDIxYjE4Y2Q0ZTAxNjVjM2YiLCJpYXQiOjE2Nzg5MDAyMTl9.w0J-nBfQRmQgWOtpIoe0saFkT3undZnC3pCRVM_g5hU

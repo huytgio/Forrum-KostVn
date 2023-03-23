@@ -8,6 +8,7 @@ import AuthContextProvider from './contexts/AuthContext';
 import ProtectedRoute from './components/route/ProtectedRoute';
 import PostContextProvider from './contexts/PostContext';
 import ViewAll from './views/ViewAll';
+import Detail from './views/Detail';
 function App() {
   return (
     <AuthContextProvider>
@@ -20,6 +21,7 @@ function App() {
             <ProtectedRoute exact path='/dashboard' component={ViewAll} />
             <ProtectedRoute exact path='/about' component={About} />
             <ProtectedRoute exact path='/myassets' component={Dashboard} />
+            <ProtectedRoute exact path='/detail' component={Detail} />
           </Switch>
         </Brouter>
       </PostContextProvider>
