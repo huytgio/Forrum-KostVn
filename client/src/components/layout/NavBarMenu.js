@@ -48,6 +48,16 @@ const NavBarMenu = () => {
                             Thông Tin
                         </Nav.Link>
 
+                        <Nav.Link
+                            className='font-weight-bolder text-white'
+                            to='/myassets'
+                            as={Link}
+                        >
+                            Của Tôi
+                        </Nav.Link>
+
+
+
                     </Nav>
                     <Nav>
                         <Nav.Link className='font-weight-bolder text-dark' disabled>

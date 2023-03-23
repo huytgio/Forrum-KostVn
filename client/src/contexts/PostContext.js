@@ -47,6 +47,23 @@ const PostContextProvider = ({ children }) => {
         }
     }
 
+    const getAllPosts = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/posts/getallpost`)
+            // console.log(response.data)
+            if (response.data.success) {
+                dispatch({ type: POSTS_LOADED_SUCCESS, payload: response.data.posts })
+            }
+        } catch (error) {
+            dispatch({ type: POSTS_LOADED_FAIL })
+            if (error.response.data) {
+                console.log('loi he thong')
+                return error.response.data
+            }
+            else return { success: false, message: error.message }
+        }
+    }
+
     const addPost = async newPost => {
         try {
             const response = await axios.post(`${apiUrl}/posts`, newPost)
@@ -95,7 +112,8 @@ const PostContextProvider = ({ children }) => {
         postState, getPosts, setShowAddPostModal, showAddPostModal,
         addPost, showToast, setShowToast,
         deletePost, updatePost, findPost,
-        showUpdatePostModal, setShowUpdatePostModal
+        showUpdatePostModal, setShowUpdatePostModal,
+        getAllPosts
     }
 
     return (

@@ -7,6 +7,7 @@ import About from './views/About';
 import AuthContextProvider from './contexts/AuthContext';
 import ProtectedRoute from './components/route/ProtectedRoute';
 import PostContextProvider from './contexts/PostContext';
+import ViewAll from './views/ViewAll';
 function App() {
   return (
     <AuthContextProvider>
@@ -16,8 +17,9 @@ function App() {
             <Route exact path='/' component={Landing} />
             <Route exact path='/login' render={props => <Auth {...props} authRoute='login' />} />
             <Route exact path='/register' render={props => <Auth {...props} authRoute='register' />} />
-            <ProtectedRoute exact path='/dashboard' component={Dashboard} />
+            <ProtectedRoute exact path='/dashboard' component={ViewAll} />
             <ProtectedRoute exact path='/about' component={About} />
+            <ProtectedRoute exact path='/myassets' component={Dashboard} />
           </Switch>
         </Brouter>
       </PostContextProvider>
