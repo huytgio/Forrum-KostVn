@@ -56,7 +56,7 @@ router.put('/:id', verifyToken, async (req, res) => {
 
         if (!UpdatedPost)
             return res.status(401).json({ success: false, message: 'Cannot Update Post' })
-        res.json({ success: true, message: 'Update success', post: UpdatedPost })
+        res.json({ success: true, message: 'Cập Nhật Thành Công', post: UpdatedPost })
 
     } catch (error) {
         console.log(error)

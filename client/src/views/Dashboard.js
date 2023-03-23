@@ -12,6 +12,7 @@ import addIcon from '../assets/plus-circle-fill.svg'
 import Overlay from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 import Toast from 'react-bootstrap/Toast'
+import UpdatePostModal from "../components/posts/UpdatePostModal"
 
 
 
@@ -21,7 +22,7 @@ const Dashboard = () => {
             user: { username }
         },
     } = useContext(AuthContext)
-    const { postState: { posts, postsLoading },
+    const { postState: { posts, postsLoading, post },
         getPosts,
         setShowAddPostModal,
         showToast: { show, message, type },
@@ -81,6 +82,7 @@ const Dashboard = () => {
         <>
             {body}
             <AddPostModal />
+            {post !== null && <UpdatePostModal />}
             <Toast show={show} style={{ position: 'fixed', top: '20%', right: '10px' }} className={`bg-${type}`}
                 onClose={setShowToast.bind(this, { show: false, message: '', type: null })}
                 delay={2000} autohide>

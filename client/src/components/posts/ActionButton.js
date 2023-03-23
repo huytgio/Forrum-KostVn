@@ -4,9 +4,16 @@ import editIcon from '../../assets/pencil.svg'
 import deleteIcon from '../../assets/trash.svg'
 import cmtIcon from '../../assets/chat.svg'
 
-import React from 'react'
+import React, { useContext } from 'react'
+import { PostContext } from "../../contexts/PostContext"
 
 const ActionButton = ({ url, _id }) => {
+    const { deletePost, findPost, setShowUpdatePostModal } = useContext(PostContext)
+    const choosePost = postId => {
+        findPost(postId)
+        setShowUpdatePostModal(true)
+
+    }
     return (
         <>
             <Button variant="outline-info" href={url} target='_blank' >
@@ -14,12 +21,12 @@ const ActionButton = ({ url, _id }) => {
                 <br></br>
                 Xem
             </Button>
-            <Button variant="outline-success" href={url} target='_blank'>
+            <Button variant="outline-success" onClick={choosePost.bind(this, _id)}>
                 <img src={editIcon} alt='play' width='32' height='32' />
                 <br></br>
                 Sửa
             </Button>
-            <Button variant="outline-danger" href={url} target='_blank'>
+            <Button variant="outline-danger" onClick={deletePost.bind(this, _id)}>
                 <img src={deleteIcon} alt='play' width='32' height='32' />
                 <br></br>
                 Xóa

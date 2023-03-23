@@ -4,6 +4,8 @@ import { postReducer } from "../Reducers/postReducer"
 import {
     ADD_POST,
     apiUrl,
+    DELETE_POST,
+    UPDATE_POST, FIND_POST,
     LOCAL_STORAGE_TOKEN_NAME,
     POSTS_LOADED_FAIL,
     POSTS_LOADED_SUCCESS
@@ -15,12 +17,14 @@ const PostContextProvider = ({ children }) => {
 
     const [postState, dispatch] = useReducer(postReducer,
         {
+            post: null,
             posts: [],
             postsLoading: false,
 
         })
 
     const [showAddPostModal, setShowAddPostModal] = useState(false)
+    const [showUpdatePostModal, setShowUpdatePostModal] = useState(false)
     const [showToast, setShowToast] = useState({
         show: false,
         message: '',
@@ -54,10 +58,46 @@ const PostContextProvider = ({ children }) => {
             return error.response.data ? error.response.data : { success: false, message: `Server has a critical damage` }
         }
     }
+
+    const deletePost = async postId => {
+        try {
+            const response = await axios.delete(`${apiUrl}/posts/${postId}`)
+            if (response.data.success)
+                dispatch({ type: DELETE_POST, payload: postId })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const findPost = postId => {
+        const post = postState.posts.find(post => post._id === postId)
+        dispatch({ type: FIND_POST, payload: post })
+    }
+
+    const updatePost = async updatedPost => {
+        try {
+            const response = await axios.put(
+                `${apiUrl}/posts/${updatedPost._id}`,
+                updatedPost
+            )
+            if (response.data.success) {
+                dispatch({ type: UPDATE_POST, payload: response.data.post })
+                return response.data
+            }
+        } catch (error) {
+            return error.response.data
+                ? error.response.data
+                : { success: false, message: 'Server error' }
+        }
+    }
+
     const PostContextData = {
         postState, getPosts, setShowAddPostModal, showAddPostModal,
-        addPost, showToast, setShowToast
+        addPost, showToast, setShowToast,
+        deletePost, updatePost, findPost,
+        showUpdatePostModal, setShowUpdatePostModal
     }
+
     return (
         <PostContext.Provider value={PostContextData}>
             {children}
