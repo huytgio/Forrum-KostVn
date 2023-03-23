@@ -14,15 +14,11 @@ const ActionButton = ({ url, _id }) => {
     const { deletePost, findPost, setShowUpdatePostModal, postState: { post } } = useContext(PostContext)
     const choosePost = postId => {
         findPost(postId)
-        console.log(post)
         setShowUpdatePostModal(true)
 
     }
     const chooseOnePost = postId => {
         findPost(postId)
-        console.log(post)
-        setShowUpdatePostModal(true)
-
     }
 
     return (
