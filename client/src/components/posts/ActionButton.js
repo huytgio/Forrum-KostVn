@@ -18,12 +18,19 @@ const ActionButton = ({ url, _id }) => {
         setShowUpdatePostModal(true)
 
     }
+    const chooseOnePost = postId => {
+        findPost(postId)
+        console.log(post)
+        setShowUpdatePostModal(true)
+
+    }
+
     return (
         <Container fluid>
 
             <Link to='/detail'>
                 <Row>
-                    <Button variant="outline-info" onClick={choosePost.bind(this, _id)} size="sm" >
+                    <Button variant="outline-info" onClick={chooseOnePost.bind(this, _id)} size="sm" >
                         <img src={playIcon} alt='play' width='32' height='32' />
                         Xem
                     </Button>
