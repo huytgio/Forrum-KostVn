@@ -1,13 +1,13 @@
 import { createContext, useReducer, useEffect } from "react"
 import axios from 'axios'
 import { authReducer } from "../Reducers/authReducer"
-import { apiUrl, apiUrl2, LOCAL_STORAGE_TOKEN_NAME } from "./Constant"
+import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from "./Constant"
 import setAuthToken from "../utils/setAuthToken"
 export const AuthContext = createContext()
 
 const AuthContextProvider = ({ children }) => {
     const [authState, dispatch] = useReducer(authReducer, {
-        authLoading: true,
+        authLoading: false,
         isAuthenticated: false,
         user: null
     })
@@ -34,7 +34,7 @@ const AuthContextProvider = ({ children }) => {
                 payload: { isAuthenticated: false, user: null }
             })
         }
-        console.log(localStorage[LOCAL_STORAGE_TOKEN_NAME] || 'not have token',)
+
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
@@ -74,9 +74,16 @@ const AuthContextProvider = ({ children }) => {
             else return { success: false, message: error.message }
         }
     }
+    const logoutUser = () => {
+        localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME)
+        dispatch({
+            type: 'SET_AUTH',
+            payload: { isAuthenticated: false, user: null }
+        })
+    }
 
 
-    const AuthContextData = { loginUser, registerUser, authState }
+    const AuthContextData = { loginUser, registerUser, logoutUser, authState }
 
     return (
         <AuthContext.Provider value={AuthContextData}>

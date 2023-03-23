@@ -15,11 +15,11 @@ router.post('/', verifyToken, async (req, res) => {
             title,
             pdesc,
             url: url.startsWith('https://') ? url : `https://${url}`,
-            status: status || 'will do',
+            status: status || 'Will Do',
             user: req.userId
         })
         await newPost.save()
-        res.json({ success: true, message: "Posted", post: newPost })
+        res.json({ success: true, message: "Đã thêm! Hy Vọng Sẽ Không Bỏ Giữa Chừng", post: newPost })
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: "MongoDB error" })
@@ -31,7 +31,7 @@ router.post('/', verifyToken, async (req, res) => {
 router.get('/', verifyToken, async (req, res) => {
     try {
         const posts = await Post.find({ user: req.userId }).populate('user', ['username'])
-        res.json({ succes: true, posts })
+        res.json({ success: true, posts })
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: "MongoDB error" })
@@ -49,7 +49,7 @@ router.put('/:id', verifyToken, async (req, res) => {
             title,
             pdesc: pdesc || '',
             url: (url.startsWith('https://') ? url : `https://${url}`) || '',
-            status: status || 'will do'
+            status: status || 'Will Do'
         }
         const postUpdateCondition = { _id: req.params.id, user: req.userId }
         UpdatedPost = await Post.findOneAndUpdate(postUpdateCondition, UpdatedPost, { new: true })

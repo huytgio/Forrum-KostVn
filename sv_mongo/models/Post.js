@@ -17,7 +17,7 @@ const PostSchema = new Schema(
         },
         status: {
             type: String,
-            enum: ['Will do', 'in work', 'complete']
+            enum: ['Will Do', 'In Work', 'Complete']
         },
         user: {
             type: Schema.Types.ObjectId,
