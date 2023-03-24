@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/esm/Badge'
 import { Link } from 'react-router-dom'
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import AlertMessage from '../components/layout/AlertMessage'
 
 
 
@@ -63,7 +64,11 @@ const Detail = () => {
 
     )
     return (
-        <div>{body}</div>
+        <>
+            <AlertMessage info={alert} />
+            <div>{body}</div>
+        </>
+
     )
 }
 

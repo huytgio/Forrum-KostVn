@@ -19,7 +19,7 @@ const UpdatePostModal = () => {
 
     useEffect(() => setUpdatedPost(post), [post])
 
-    const { title, description, url, status } = updatedPost
+    const { title, pdesc, url, status } = updatedPost
 
     const onChangeUpdatedPostForm = event =>
         setUpdatedPost({ ...updatedPost, [event.target.name]: event.target.value })
@@ -64,8 +64,8 @@ const UpdatePostModal = () => {
                             as='textarea'
                             rows={3}
                             placeholder='Mô tả'
-                            name='description'
-                            value={description}
+                            name='pdesc'
+                            value={pdesc}
                             onChange={onChangeUpdatedPostForm}
                         />
                     </Form.Group>

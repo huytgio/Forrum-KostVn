@@ -49,6 +49,24 @@ router.get('/getallpost', verifyToken, async (req, res) => {
     }
 })
 
+router.get('/getbykey/:key', verifyToken, async (req, res) => {
+    let dynamicKey = req.params.key;
+    try {
+        //const posts = await Post.find({ user: req.userId }).populate('user', ['username'])
+        const posts = await Post.find({
+            $or: [
+                { title: { $regex: dynamicKey } },
+                { url: { $regex: dynamicKey } },
+                { pdesc: { $regex: dynamicKey } }
+            ]
+        })
+        res.json({ success: true, posts })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, message: "MongoDB error" })
+    }
+})
+
 router.get('/:id', verifyToken, async (req, res) => {
     try {
         //const posts = await Post.find({ user: req.userId }).populate('user', ['username'])

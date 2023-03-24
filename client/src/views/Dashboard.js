@@ -1,5 +1,5 @@
 import { PostContext } from "../contexts/PostContext"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import Spinner from "react-bootstrap/esm/Spinner"
 import Card from "react-bootstrap/Card"
 import { AuthContext } from "../contexts/AuthContext"
@@ -13,10 +13,12 @@ import Overlay from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 import Toast from 'react-bootstrap/Toast'
 import UpdatePostModal from "../components/posts/UpdatePostModal"
+import AlertMessage from "../components/layout/AlertMessage"
 
 
 
 const Dashboard = () => {
+
     const {
         authState: {
             user: { username }
@@ -26,11 +28,15 @@ const Dashboard = () => {
         getPosts,
         setShowAddPostModal,
         showToast: { show, message, type },
-        setShowToast
+        setShowToast, getPostsByKey
     } = useContext(PostContext)
 
     useEffect(() => {
         const loadUserWrapper = () => getPosts();
+        loadUserWrapper();
+    }, []);
+    useEffect(() => {
+        const loadUserWrapper = () => getPostsByKey();
         loadUserWrapper();
     }, []);
     let body = null
@@ -61,18 +67,22 @@ const Dashboard = () => {
     } else if (posts) {
         body = (
             <>
-                <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-                    {posts.map(post => (
-                        <Col key={post._id} className='my-2'>
-                            <SinglePost post={post} />
-                        </Col>
-                    ))}
-                </Row>
-                <Overlay placement="left" overlay={<Tooltip> Chia sẻ thêm cho chúng tôi </Tooltip>}>
-                    <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
-                        <img src={addIcon} alt='add' width='80' height='80' />
-                    </Button>
-                </Overlay>
+                <Card>
+                    <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
+                        {posts.map(post => (
+                            <Col key={post._id} className='my-2'>
+                                <SinglePost post={post} />
+                            </Col>
+                        ))}
+                    </Row>
+                    <Overlay placement="left" overlay={<Tooltip> Chia sẻ thêm cho chúng tôi </Tooltip>}>
+                        <Button className="btn-floating" onClick={setShowAddPostModal.bind(this, true)}>
+                            <img src={addIcon} alt='add' width='80' height='80' />
+                        </Button>
+                    </Overlay>
+                </Card>
+
+
 
             </>
         )
@@ -80,6 +90,7 @@ const Dashboard = () => {
 
     return (
         <>
+            <AlertMessage info={alert} />
             {body}
             <AddPostModal />
             {post !== null && <UpdatePostModal />}

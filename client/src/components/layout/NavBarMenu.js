@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import { AuthContext } from '../../contexts/AuthContext'
 import { useContext } from 'react'
-
+import Search from './Search'
 const NavBarMenu = () => {
     const {
         authState: {
@@ -56,6 +56,9 @@ const NavBarMenu = () => {
                             Của Tôi
                         </Nav.Link>
 
+                        <Nav className="me-auto">
+                            <Search />
+                        </Nav>
 
 
                     </Nav>

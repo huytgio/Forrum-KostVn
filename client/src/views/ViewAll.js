@@ -9,6 +9,7 @@ import SinglePostAll from "../components/posts/SinglePostAll"
 import addIcon from '../assets/plus-circle-fill.svg'
 import Overlay from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
+import Search from "../components/layout/Search"
 
 
 const ViewAll = () => {
