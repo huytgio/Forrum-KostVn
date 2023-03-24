@@ -59,8 +59,8 @@ const Search = () => {
                     onChange={onSearchChange}
                     ref={ref}
                 />
-                <Button variant="outline-success" type="submit" >Tìm Kiếm</Button>
-                <Button variant="outline-danger" type="reset" >Xóa Kết Quả Tìm Kiếm</Button>
+                <Button variant="success" type="submit" className="text-white" >Tìm Kiếm</Button>
+                <Button variant="danger" type="reset" className="text-white" >Xóa Kết Quả Tìm Kiếm</Button>
 
 
             </Form>
