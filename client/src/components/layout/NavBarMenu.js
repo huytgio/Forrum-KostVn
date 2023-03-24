@@ -31,14 +31,14 @@ const NavBarMenu = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto" variant="tabs">
+                    <Nav className="me-auto my-3" variant="tabs">
                         <Nav.Link
                             className='font-weight-bolder text-white'
                             to='/dashboard'
                             as={Link}
 
                         >
-                            Trang Chủ
+                            <div>Trang Chủ</div>
                         </Nav.Link>
                         <Nav.Link
                             className='font-weight-bolder text-white'
