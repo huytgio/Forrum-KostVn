@@ -9,13 +9,21 @@ import Row from 'react-bootstrap/Row'
 import Container from "react-bootstrap/esm/Container"
 import { Link } from "react-router-dom"
 import { Redirect } from "react-router-dom"
+import AddCmtModal from "./AddCmtModal"
+
 
 const ActionButtonAll = ({ url, _id }) => {
-    const { findPost,
-        postState: { post } } = useContext(PostContext)
+    const { findPost, setShowAddCmtModal, getPostId,
+        postState: { post, cmts } } = useContext(PostContext)
+
     const choosePost = postId => {
         findPost(postId)
-        // console.log(post)
+        return postId
+    }
+    const choosePosttoCmt = postId => {
+        getPostId(postId)
+        setShowAddCmtModal(true)
+        // return postId
     }
     return (
         <Container >
@@ -37,7 +45,7 @@ const ActionButtonAll = ({ url, _id }) => {
             </Row>
 
             <Row>
-                <Button variant="outline-secondary">
+                <Button variant="outline-secondary" onClick={choosePosttoCmt.bind(this, _id)} >
                     <img src={cmtIcon} alt='play' width='32' height='32' />
                     Ý Kiến
                 </Button>
