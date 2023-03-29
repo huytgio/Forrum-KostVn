@@ -37,6 +37,11 @@ export const postReducer = (state, action) => {
         case "FIND_POST":
             return { ...state, post: payload }
 
+        case "CMT_LOADED_SUCCESS":
+            return {
+                ...state, cmts: payload
+            }
+
         default:
             return state
 

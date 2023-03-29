@@ -8,7 +8,7 @@ const verifyToken = require("../middleware/auth")
 //add
 // Create a comment in the post. POST / : postId / verifyToken Posts are validated before they are saved
 router.post('/:postId', verifyToken, async (req, res) => {
-    const poststtile = await Post.find({ _id: req.params.postId })
+    const poststtile = await Post.find({ _id: req.params.postId }).select('title')
     const { post, content, cmttype } = req.body
     if (!content)
         return res.status(400).json({ success: false, message: "content is needed" })
@@ -17,14 +17,14 @@ router.post('/:postId', verifyToken, async (req, res) => {
         const newCmt = new Cmt({
             post: req.params.postId,
             content,
-            cmttype: cmttype || 'Feedback',
+            cmttype: cmttype,
             user: req.userId
         })
         await newCmt.save()
-        res.json({ success: true, message: "Comment Posted", post: newCmt, poststtile })
+        res.json({ success: true, message: "Comment Posted", cmt: newCmt, poststtile })
     } catch (error) {
         console.log(error)
-        res.status(500).json({ success: false, message: "MongoDB error" })
+        res.status(500).json({ success: false, message: error })
     }
 })
 
@@ -32,8 +32,8 @@ router.post('/:postId', verifyToken, async (req, res) => {
 // Finds and returns posts matching the given route. This is a GET and should be used for post / { postId }
 router.get('/:postId', verifyToken, async (req, res) => {
     try {
-        const posts = await Cmt.find({ post: req.params.postId }).populate('post', ['title'])
-        res.json({ succes: true, posts })
+        const cmts = await Cmt.find({ post: req.params.postId }).populate('user', ['username'])
+        res.json({ success: true, cmts })
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: "MongoDB error" })

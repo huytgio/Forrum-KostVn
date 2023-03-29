@@ -68,12 +68,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDExZ
     "status": "Feedback"
 }
 ###
-DELETE  http://localhost:5000/api/comment/641338ef80788935bcf9a644/64134161d0c702b6616c7cc7
+GET  http://localhost:5000/api/comment/641c2fb15f64e7909083d4d6
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDExZjc5MDIxYjE4Y2Q0ZTAxNjVjM2YiLCJpYXQiOjE2Nzg5MDAyMTl9.w0J-nBfQRmQgWOtpIoe0saFkT3undZnC3pCRVM_g5hU
 
 {
-    "content":"Linh is my pretty mom, and i love her so much",
+    "content":"Bài 1 rất hay, xin cảm ơn",
     "status": "Feedback"
 }
 ###

@@ -6,11 +6,10 @@ import {
     apiUrl,
     DELETE_POST,
     UPDATE_POST, FIND_POST,
-    LOCAL_STORAGE_TOKEN_NAME,
     POSTS_LOADED_FAIL,
-    POSTS_LOADED_SUCCESS
+    POSTS_LOADED_SUCCESS,
+    ADD_CMTS
 } from "./Constant"
-import setAuthToken from "../utils/setAuthToken"
 export const PostContext = createContext()
 
 const PostContextProvider = ({ children }) => {
@@ -20,11 +19,11 @@ const PostContextProvider = ({ children }) => {
             post: null,
             posts: [],
             postsLoading: false,
-
         })
 
     const [showAddPostModal, setShowAddPostModal] = useState(false)
     const [showUpdatePostModal, setShowUpdatePostModal] = useState(false)
+    const [showAddCmtModal, setShowAddCmtModal] = useState(false)
     const [showToast, setShowToast] = useState({
         show: false,
         message: '',
@@ -49,6 +48,7 @@ const PostContextProvider = ({ children }) => {
             else return { success: false, message: error.message }
         }
     }
+
 
     const getAllPosts = async () => {
         try {
@@ -106,6 +106,12 @@ const PostContextProvider = ({ children }) => {
         dispatch({ type: FIND_POST, payload: post })
     }
 
+    const getPostId = postId => {
+        const post = postState.posts.find(post => post._id === postId)
+        dispatch({ type: FIND_POST, payload: post })
+        return postId
+    }
+
     const updatePost = async updatedPost => {
         try {
             const response = await axios.put(
@@ -123,12 +129,30 @@ const PostContextProvider = ({ children }) => {
         }
     }
 
+    // const addCmttoPost = async (postId, addedCmttoPost) => {
+    //     try {
+    //         const response = await axios.post(
+    //             `${apiUrl}/comment/${postId}`, addedCmttoPost
+    //         )
+    //         if (response.data.success) {
+    //             dispatch({ type: ADD_POST, payload: response.data.post })
+    //             return response.data
+    //         }
+    //     } catch (error) {
+    //         return error.response.data
+    //             ? error.response.data
+    //             : { success: false, message: 'Server error' }
+    //     }
+    // }
+
     const PostContextData = {
         postState, getPosts, setShowAddPostModal, showAddPostModal,
         addPost, showToast, setShowToast,
         deletePost, updatePost, findPost,
         showUpdatePostModal, setShowUpdatePostModal,
-        getAllPosts, getPostsByKey, setKeyPost, KeyPost
+        getAllPosts, getPostsByKey, setKeyPost, KeyPost,
+        showAddCmtModal, setShowAddCmtModal,
+        getPostId
     }
 
     return (

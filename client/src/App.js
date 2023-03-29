@@ -9,21 +9,24 @@ import ProtectedRoute from './components/route/ProtectedRoute';
 import PostContextProvider from './contexts/PostContext';
 import ViewAll from './views/ViewAll';
 import Detail from './views/Detail';
+import CmtContextProvider from './contexts/CommentContext';
 function App() {
   return (
     <AuthContextProvider>
       <PostContextProvider>
-        <Brouter>
-          <Switch>
-            <Route exact path='/' component={Landing} />
-            <Route exact path='/login' render={props => <Auth {...props} authRoute='login' />} />
-            <Route exact path='/register' render={props => <Auth {...props} authRoute='register' />} />
-            <ProtectedRoute exact path='/dashboard' component={ViewAll} />
-            <ProtectedRoute exact path='/about' component={About} />
-            <ProtectedRoute exact path='/myassets' component={Dashboard} />
-            <ProtectedRoute exact path='/detail' component={Detail} />
-          </Switch>
-        </Brouter>
+        <CmtContextProvider>
+          <Brouter>
+            <Switch>
+              <Route exact path='/' component={Landing} />
+              <Route exact path='/login' render={props => <Auth {...props} authRoute='login' />} />
+              <Route exact path='/register' render={props => <Auth {...props} authRoute='register' />} />
+              <ProtectedRoute exact path='/dashboard' component={ViewAll} />
+              <ProtectedRoute exact path='/about' component={About} />
+              <ProtectedRoute exact path='/myassets' component={Dashboard} />
+              <ProtectedRoute exact path='/detail' component={Detail} />
+            </Switch>
+          </Brouter>
+        </CmtContextProvider>
       </PostContextProvider>
     </AuthContextProvider>
   );

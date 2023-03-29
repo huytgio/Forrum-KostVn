@@ -14,7 +14,7 @@ const CmtSchema = new Schema(
         },
         cmttype: {
             type: String,
-            enum: ['Feedback', 'Additional']
+            require: true
         },
         user: {
             type: Schema.Types.ObjectId,

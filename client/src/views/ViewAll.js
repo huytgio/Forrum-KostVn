@@ -10,6 +10,8 @@ import addIcon from '../assets/plus-circle-fill.svg'
 import Overlay from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 import Search from "../components/layout/Search"
+import AddCmtModal from "../components/posts/AddCmtModal"
+import Toast from 'react-bootstrap/Toast'
 
 
 const ViewAll = () => {
@@ -18,7 +20,7 @@ const ViewAll = () => {
             user: { username }
         },
     } = useContext(AuthContext)
-    const { postState: { posts },
+    const { postState: { posts }, showToast: { show, message, type }, setShowToast,
         getAllPosts,
         setShowAddPostModal
     } = useContext(PostContext)
@@ -43,7 +45,16 @@ const ViewAll = () => {
         </>
     )
     return (
-        <>
+        <>   <Toast show={show} style={{ position: 'fixed', top: '20%', right: '10px' }} className={`bg-${type}`}
+            onClose={setShowToast.bind(this, { show: false, message: '', type: null })}
+            delay={2000} autohide>
+            <Toast.Body>
+                <strong>
+                    {message}
+                </strong>
+            </Toast.Body>
+        </Toast>
+            <AddCmtModal />
             {body}
         </>
     )
