@@ -76,6 +76,10 @@ const Detail = () => {
                     <Card.Text>
                         {pdesc}
                     </Card.Text>
+                    <Card.Text>
+                        {/* <Link to={url}> truy cập: "{url}" để biết thêm chi tiết </Link> */}
+                        <Button href={url} variant='secondary'> {url} </Button>
+                    </Card.Text>
                 </Card.Body>
                 <Link to='/dashboard'>
                     <Button variant="primary" size='sm'>Trở về</Button>
