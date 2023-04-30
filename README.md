@@ -30,20 +30,20 @@ Welcome to my personal blog! This full-stack MERN React app was created to share
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 ```
-Table of Contents
+## Table of Contents
 Models
 Routes
 Components
 Contexts
 Reducers
 Models
-The models file includes the following models:
+#The models file includes the following models:
+#User
+#Post
+#Comment
+#Routes
 
-User
-Post
-Comment
-Routes
-The route file includes the following routes:
+##The route file includes the following routes:
 
 AuthRoute
 PostRoute
@@ -51,19 +51,19 @@ CmtRoute
 Components
 The app includes the following components:
 
-Auth
+# Auth
 Layout
 Post
 Route
 Contexts
 The following contexts are used in the app:
 
-AuthContext
+# AuthContext
 PostContext
 CmtContext
 Reducers
-The reducers corresponding to the contexts are:
 
+## The reducers corresponding to the contexts are:
 authReducer
 postReducer
 cmtReducer
