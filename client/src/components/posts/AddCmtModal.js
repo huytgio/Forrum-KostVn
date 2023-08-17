@@ -36,11 +36,13 @@ const AddCmtModal = () => {
     }
 
     const onSubmit = async event => {
-        event.preventDefault()
-        const { message, success } = await addCmt(post._id, newCmt)
-        // setShowToast({ show: true, message, type: success ? 'success' : 'danger' })
-        resetAddCmtData()
-    }
+        event.preventDefault();
+        const { message, success } = await addCmt(post._id, newCmt);
+        if (success) {
+            getCmtByPost(post._id); // Tải lại danh sách ý kiến
+            resetAddCmtData();
+        }
+    };
 
 
 

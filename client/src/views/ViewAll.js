@@ -14,6 +14,7 @@ import AddCmtModal from "../components/posts/AddCmtModal"
 import Toast from 'react-bootstrap/Toast'
 
 
+
 const ViewAll = () => {
     const {
         authState: {
@@ -26,14 +27,17 @@ const ViewAll = () => {
     } = useContext(PostContext)
 
     useEffect(() => {
-        const loadUserWrapper = () => getAllPosts();
+        const loadUserWrapper = async () => {
+            await getAllPosts();
+        };
         loadUserWrapper();
     }, []);
+    const sortedPosts = [...posts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     let body
     body = (
         <> <Card>
-            <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-                {posts.map(post => (
+            <Row className='row-cols-1 row-cols-md-5 g-4 mx-2 mt-2'>
+                {sortedPosts.map(post => (
                     <Col key={post._id} className='my-2'>
                         <SinglePostAll post={post} />
                     </Col>

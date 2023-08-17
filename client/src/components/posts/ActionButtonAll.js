@@ -44,12 +44,12 @@ const ActionButtonAll = ({ url, _id }) => {
                 </Button>
             </Row>
 
-            <Row>
+            {/* <Row>
                 <Button variant="outline-secondary" onClick={choosePosttoCmt.bind(this, _id)} >
                     <img src={cmtIcon} alt='play' width='32' height='32' />
                     Ý Kiến
                 </Button>
-            </Row>
+            </Row> */}
 
 
         </Container>

@@ -39,7 +39,8 @@ const Search = () => {
     }
     const onClear = async event => {
         event.preventDefault()
-        getPosts()
+        // getPosts()
+        window.location.reload();
 
     }
 

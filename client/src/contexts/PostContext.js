@@ -112,6 +112,9 @@ const PostContextProvider = ({ children }) => {
         return postId
     }
 
+
+
+
     const updatePost = async updatedPost => {
         try {
             const response = await axios.put(
@@ -128,6 +131,7 @@ const PostContextProvider = ({ children }) => {
                 : { success: false, message: 'Server error' }
         }
     }
+
 
     // const addCmttoPost = async (postId, addedCmttoPost) => {
     //     try {
@@ -152,7 +156,7 @@ const PostContextProvider = ({ children }) => {
         showUpdatePostModal, setShowUpdatePostModal,
         getAllPosts, getPostsByKey, setKeyPost, KeyPost,
         showAddCmtModal, setShowAddCmtModal,
-        getPostId
+        getPostId,
     }
 
     return (

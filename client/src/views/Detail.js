@@ -12,30 +12,41 @@ import AlertMessage from '../components/layout/AlertMessage'
 import Row from "react-bootstrap/esm/Row"
 import Col from "react-bootstrap/esm/Col"
 import SingleCmt from '../components/posts/SingleCmt'
+import AddCmtModal from "../components/posts/AddCmtModal"
 
 
 
 
 const Detail = () => {
-    const { postState: { post: { _id, status, title, pdesc, url, user: { username } }, posts }
-    } = useContext(PostContext)
+    const { postState: { post: { _id, status, title, pdesc, url, user: { username } }, posts, },
+        getPostId, showAddCmtModal, setShowAddCmtModal
+    } = useContext(PostContext);
     const { cmtState: { cmts }, getCmtByPost } = useContext(CmtContext)
 
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
+    const choosePosttoCmt = _id => {
+        getPostId(_id);
+        setShowAddCmtModal(true);
+        console.log(_id)
+    };
+
 
     // useEffect(() => {
     //     const loadUserWrapper = () => getCmtByPost(_id);
     //     loadUserWrapper();
     // }, []);
+    useEffect(() => {
+        getCmtByPost(_id);
+    }, []);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const ShowCmt = async event => {
-        event.preventDefault()
-        getCmtByPost(_id)
-        console.log(cmts, 'đã có')
-        handleShow()
-    }
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
+    // const ShowCmt = async event => {
+    //     event.preventDefault()
+    //     getCmtByPost(_id)
+    //     console.log(cmts, 'đã có')
+    //     handleShow()
+    // }
     let card
     if (cmts.length === 0) {
         card = (
@@ -44,7 +55,7 @@ const Detail = () => {
     } else {
         card = (
             <Card>
-                <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
+                <Row className='row-cols-1 row-cols-md-2 g-4 mx-auto mt-3'>
                     {cmts.map(cmt => (
                         <Col key={cmt._id} className='my-2'>
                             <SingleCmt cmt={cmt} />
@@ -55,11 +66,13 @@ const Detail = () => {
         )
     }
     let body
+
     body = (
         <>
+            <AddCmtModal />
             <Card>
                 <Card.Header> tác giả: {username}</Card.Header>
-                <Button variant="secondary" size='sm' onClick={ShowCmt}> Hiện Ý Kiến</Button>
+
                 <Card.Body>
                     <Card.Title className="text-center">{title}</Card.Title>
                     <Badge className='text-center'
@@ -80,20 +93,22 @@ const Detail = () => {
                         {/* <Link to={url}> truy cập: "{url}" để biết thêm chi tiết </Link> */}
                         <Button href={url} variant='secondary'> {url} </Button>
                     </Card.Text>
+                    <Card.Body className="text-center">
+                        <Card.Title className="text-center mb-4">
+                            <span className="text-primary font-weight-bold">Câu hỏi</span>
+                        </Card.Title>
+                        {card}
+                        <Button variant="primary" size='sm' onClick={choosePosttoCmt.bind(this, _id)}>
+                            Thêm Ý Kiến
+                        </Button>
+                    </Card.Body>
+
                 </Card.Body>
                 <Link to='/dashboard'>
                     <Button variant="primary" size='sm'>Trở về</Button>
                 </Link>
             </Card>
-            <Offcanvas show={show} onHide={handleClose} placement='bottom'>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Góp Ý</Offcanvas.Title>
 
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                    {card}
-                </Offcanvas.Body>
-            </Offcanvas>
         </>
 
 
