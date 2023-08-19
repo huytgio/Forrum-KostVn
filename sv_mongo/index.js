@@ -31,5 +31,5 @@ app.use('/api/comment', cmtRouter)
 
 app.get('/', (req, res) => res.send('cmmdmm'))
 
-const PORT = process.evn.PORT || 5000
+const PORT = 5000
 app.listen(PORT, () => console.log(`sv started on port ${PORT}`))
