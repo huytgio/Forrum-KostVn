@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "build": "^0.1.4",
     "react-virtualized": "^9.22.5"
   }
 }
