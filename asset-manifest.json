@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/huytgio/HeThongNoSQL/static/css/main.e936cb4b.css",
+    "main.js": "/huytgio/HeThongNoSQL/static/js/main.6c13ed59.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/huytgio/HeThongNoSQL/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/landingi.jpg": "/huytgio/HeThongNoSQL/static/media/landingi.e0c1e185c76a91a82d38.jpg",
+    "static/media/large.png": "/huytgio/HeThongNoSQL/static/media/large.3e8eb59e0a11bc1f6a9d.png",
+    "static/media/play-btn.png": "/huytgio/HeThongNoSQL/static/media/play-btn.8c3a2e17bbbb5e014c3d.png",
+    "index.html": "/huytgio/HeThongNoSQL/index.html",
+    "static/media/chat.svg": "/huytgio/HeThongNoSQL/static/media/chat.52e65ac957c729783507f613195308c6.svg",
+    "static/media/trash.svg": "/huytgio/HeThongNoSQL/static/media/trash.61142061449ec8e8b9c78b3dfef75a3e.svg",
+    "static/media/logout.svg": "/huytgio/HeThongNoSQL/static/media/logout.8e64276b680bcce5278d2d7049274d61.svg",
+    "static/media/pencil.svg": "/huytgio/HeThongNoSQL/static/media/pencil.f9418d96b45391025b29d7aa8f451ef4.svg",
+    "static/media/view.svg": "/huytgio/HeThongNoSQL/static/media/view.261f39ce4bb18e4502fdbcd746e7bb65.svg",
+    "static/media/plus-circle-fill.svg": "/huytgio/HeThongNoSQL/static/media/plus-circle-fill.a9d0f92d5e2f616b2f2d637e1bbc4b0e.svg",
+    "main.e936cb4b.css.map": "/huytgio/HeThongNoSQL/static/css/main.e936cb4b.css.map",
+    "main.6c13ed59.js.map": "/huytgio/HeThongNoSQL/static/js/main.6c13ed59.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/huytgio/HeThongNoSQL/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e936cb4b.css",
+    "static/js/main.6c13ed59.js"
+  ]
+}
