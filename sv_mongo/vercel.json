@@ -3,8 +3,7 @@
     "name": "backend",
     "builds": [
         {
-            "src": "index.js",
-            "use": "yarn"
+            "src": "index.js"
         }
     ],
     "routes": [
