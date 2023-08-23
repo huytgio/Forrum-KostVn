@@ -29,7 +29,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/posts', postRouter)
 app.use('/api/comment', cmtRouter)
 
-app.get('/', (req, res) => res.send('cmmdmm'))
+app.get('/', (req, res) => res.send('Đã kết nối thành công'))
 
 const PORT = 5000
 app.listen(PORT, () => console.log(`sv started on port ${PORT}`))
