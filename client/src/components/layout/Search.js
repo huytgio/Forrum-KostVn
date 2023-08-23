@@ -15,7 +15,7 @@ const Search = () => {
     const [alert, setAlert] = useState(null)
     const ref = useRef(null)
     const { postState: { posts },
-        getPostsByKey, getPosts
+        getPostsByKey
     } = useContext(PostContext)
 
 
@@ -27,8 +27,10 @@ const Search = () => {
     const onSearchChange = event => setKeyPost({ ...keygeted, [event.target.name]: [event.target.value] })
     const onSubmit = async event => {
         event.preventDefault()
+
         if (!ref.current.value) {
             setAlert({ type: 'danger', message: 'Ô tìm kiếm không được trống' })
+            onClear()
             setTimeout(() => setAlert(null), 2000)
         } else {
 
@@ -39,8 +41,9 @@ const Search = () => {
     }
     const onClear = async event => {
         event.preventDefault()
-        // getPosts()
         window.location.reload();
+        setKeyPost({ key: '' });
+        ref.current.value = '';
 
     }
 

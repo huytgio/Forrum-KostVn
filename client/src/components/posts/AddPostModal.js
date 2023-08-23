@@ -64,9 +64,9 @@ const AddPostModal = () => {
                         />
                     </Form.Group>
                     <Form.Select aria-label="Default select example" name='status' value={status} onChange={onChangeNewPostForm} >
-                        <option value="In Work">Đang Nghiên Cứu</option>
-                        <option value="Complete">Hoàn Thành Nghiên Cứu</option>
-                        <option value="Will Do"> Sẽ Nghiên Cứu</option>
+                        <option value="In Work">Hỏi đáp</option>
+                        <option value="Complete">Chia sẽ</option>
+                        <option value="Will Do"> Khác</option>
                     </Form.Select>
                 </Modal.Body>
                 <Modal.Footer>
