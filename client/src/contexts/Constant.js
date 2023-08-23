@@ -1,7 +1,7 @@
 export const apiUrl =
     process.env.NODE_ENV !== 'production'
         ? 'http://localhost:5000/api'
-        : 'https://kostvnapi.onrender.com/api'
+        : 'https://he-thong-no-sql-rust.vercel.app/api'
 
 export const apiUrl2 =
     process.env.NODE_ENV !== 'production'
