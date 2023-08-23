@@ -6,7 +6,7 @@ export const apiUrl =
 export const apiUrl2 =
     process.env.NODE_ENV !== 'production'
         ? 'http://26.155.8.197:5000/api'
-        : 'someUrl'
+        : 'https://he-thong-no-sql-rust.vercel.app/api'
 export const LOCAL_STORAGE_TOKEN_NAME = 'let-me-know'
 
 export const POSTS_LOADED_SUCCESS = 'POSTS_LOADED_SUCCESS'

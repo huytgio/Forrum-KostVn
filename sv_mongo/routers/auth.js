@@ -33,7 +33,7 @@ router.post('/register', async (req, res) => {
         const user = await User.findOne({ username })
         if (user)
             return res.status(400).json({ success: false, message: "Tên người dùng đã tồn tại, mời nhập tên khác" })
-        const hashedPassword2 = await argon2.hash(password)
+        // const hashedPassword2 = await argon2.hash(password)
         const hashedPassword = await bcrypt.hash(password)
         const newUser = new User({ username, password: hashedPassword })
         await newUser.save()
@@ -60,7 +60,7 @@ router.post('/login', async (req, res) => {
         /* const hashedPassword = await argon2.hash(password)
         const newUser = new User({username,password:hashedPassword})
         await newUser.save() */
-        const passwordValid2 = await argon2.verify(user.password, password)
+        // const passwordValid2 = await argon2.verify(user.password, password)
         const passwordValid = await bcrypt.verify(user.password, password)
         if (!passwordValid)
             return res.status(400).json({ success: false, message: "Sai mật khẩu" })
