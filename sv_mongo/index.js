@@ -5,10 +5,12 @@ const cors = require('cors')
 const authRouter = require('./routers/auth')
 const postRouter = require('./routers/post')
 const cmtRouter = require('./routers/comment')
+const dbaray_test = `mongodb+srv://nguyenqui19052000:123123123b@tieuluan.vhbhunp.mongodb.net/tieuluan?retryWrites=true&w=majority`
+const dbaray_product = `mongodb+srv://huytgio147:147852as@letmeknow.vdxja2f.mongodb.net/LetmeKnow?retryWrites=true&w=majority`
 // Connect to the database and set wide ACLs. This is called once per request
 const connectDB = async () => {
     try {
-        await mongoose.connect(`mongodb+srv://huytgio147:147852as@letmeknow.vdxja2f.mongodb.net/LetmeKnow?retryWrites=true&w=majority`,
+        await mongoose.connect(dbaray_test,
             {
 
             })
