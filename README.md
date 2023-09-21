@@ -156,7 +156,7 @@ Please note that this is just an example README file and you should tailor it to
 
 ### 1.Server:
 Install some lib to build server:
-### `npm i express jsonwebtoken mongoose dotenv cors`
+### `npm i express jsonwebtoken mongoose dotenv cors bcryptjs`
 
 ### 2. Client:
 I use some lib to build this app in a client, install them by:
